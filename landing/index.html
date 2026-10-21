@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Bonus: The Jar &amp; Plan Printables</title>
+<meta name="description" content="Free printable jar labels, a blank 30-day plan for one, weekly lists and a pantry restock tracker. A companion to High-Protein Dry Mix Pantry.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,700;1,500&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--green:#1A422C;--cream:#F6EEDC;--paper:#FCF8EE;--gold:#B8913A;--sage:#7C9A7E;--ink:#23301F;--err:#9B2C2C}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;font-size:18px;line-height:1.55}
+.wrap{max-width:1000px;margin:0 auto;padding:40px 20px 56px;display:grid;grid-template-columns:1fr 1.15fr;gap:48px;align-items:center}
+.cover{display:flex;justify-content:center}
+.cover img{width:100%;max-width:340px;height:auto;border-radius:4px;box-shadow:0 18px 40px rgba(26,66,44,.28),0 2px 6px rgba(0,0,0,.15)}
+.eyebrow{font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:13px;color:var(--gold);margin:0 0 10px}
+h1{font-family:'Lora',serif;color:var(--green);font-size:clamp(30px,4.6vw,44px);line-height:1.12;margin:0 0 14px}
+.lead{margin:0 0 18px}
+ul.items{list-style:none;padding:0;margin:0 0 24px}
+ul.items li{padding-left:28px;position:relative;margin:6px 0}
+ul.items li:before{content:"";position:absolute;left:4px;top:.55em;width:10px;height:10px;border-radius:50%;background:var(--sage)}
+form{background:var(--paper);border:1px solid #E4D9BC;border-radius:10px;padding:22px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label{display:block;font-weight:600;font-size:15px;margin:0 0 12px;color:var(--green)}
+input[type=text],input[type=email]{width:100%;margin-top:4px;padding:12px;font:inherit;border:1px solid #BFB38E;border-radius:6px;background:#fff;color:var(--ink)}
+input:focus{outline:3px solid rgba(184,145,58,.45);border-color:var(--gold)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+button{width:100%;margin-top:6px;padding:14px 18px;font:inherit;font-weight:600;font-size:18px;color:#fff;background:var(--green);border:0;border-radius:6px;cursor:pointer}
+button:hover{background:#235636}
+button:disabled{opacity:.65;cursor:wait}
+.note{font-size:13.5px;color:#55604F;margin:12px 0 0}
+.err{color:var(--err);font-size:15px;margin:10px 0 0;font-weight:600}
+.done{background:var(--paper);border:1px solid #E4D9BC;border-radius:10px;padding:26px}
+.done h2{font-family:'Lora',serif;color:var(--green);margin:0 0 8px}
+.dl{display:inline-block;margin-top:8px;padding:14px 22px;background:var(--green);color:#fff;text-decoration:none;font-weight:600;border-radius:6px}
+.small{font-size:14px;color:#55604F}
+@media(max-width:760px){.wrap{grid-template-columns:1fr;gap:26px;padding:24px 16px 40px}.cover img{max-width:220px}.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="cover"><img src="cover.jpg" alt="Book cover: High-Protein Dry Mix Pantry" width="340"></div>
+  <div>
+    <p class="eyebrow">Free bonus for readers</p>
+    <h1>The Jar &amp; Plan Printables</h1>
+    <p class="lead">Print-ready pages to go with <em>High-Protein Dry Mix Pantry: Mix Once, Know the Numbers</em> by Judith Maren.</p>
+    <ul class="items">
+      <li>Jar labels: mix name, date made, use-by date, scoop size</li>
+      <li>A blank 30-day plan for one, with cook days and leftover days</li>
+      <li>Weekly jar lists and shopping lists</li>
+      <li>A pantry restock tracker for your staples</li>
+    </ul>
+
+    <form id="f" novalidate>
+      <div class="row">
+        <label>First name<input type="text" name="nome" autocomplete="given-name" required maxlength="80"></label>
+        <label>Last name<input type="text" name="cognome" autocomplete="family-name" required maxlength="80"></label>
+      </div>
+      <label>Email<input type="email" name="email" autocomplete="email" required maxlength="160"></label>
+      <div class="hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+      <button type="submit" id="btn">Get my free printables</button>
+      <p class="err" id="err" role="alert" hidden></p>
+      <p class="note">We use your name and email only to send you this bonus and, occasionally, news about Judith Maren's books. You can unsubscribe at any time.</p>
+    </form>
+
+    <div class="done" id="done" hidden aria-live="polite">
+      <h2>Thank you! Your bonus is ready.</h2>
+      <p>Open the PDF, then print it at 100% on letter paper (8.5 x 11 in).</p>
+      <a class="dl" id="dl" href="#" target="_blank" rel="noopener">Open the printables (PDF)</a>
+      <p class="small">If the file does not open, copy the link into a new browser tab.</p>
+    </div>
+  </div>
+</main>
+<script>
+(function(){
+  var f=document.getElementById('f'),btn=document.getElementById('btn'),err=document.getElementById('err'),done=document.getElementById('done'),dl=document.getElementById('dl');
+  var RE=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  function show(m){err.textContent=m;err.hidden=false}
+  f.addEventListener('submit',function(e){
+    e.preventDefault(); err.hidden=true;
+    var d={nome:f.nome.value.trim(),cognome:f.cognome.value.trim(),email:f.email.value.trim(),website:f.website.value};
+    if(!d.nome||!d.cognome) return show('Please enter your first and last name.');
+    if(!RE.test(d.email)) return show('Please enter a valid email address.');
+    btn.disabled=true; btn.textContent='Sending...';
+    fetch('/api/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
+      .then(function(r){return r.json().catch(function(){return {ok:false}})})
+      .then(function(j){
+        if(j&&j.ok===true&&j.bonusUrl){dl.href=j.bonusUrl;f.hidden=true;done.hidden=false;}
+        else{show('Something went wrong. Please check your details and try again.');btn.disabled=false;btn.textContent='Get my free printables';}
+      })
+      .catch(function(){show('Connection problem. Please try again.');btn.disabled=false;btn.textContent='Get my free printables';});
+  });
+})();
+</script>
+</body>
+</html>
